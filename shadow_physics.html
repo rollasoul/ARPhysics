@@ -429,21 +429,23 @@
 
 			// Step world
 			physicsWorld.stepSimulation( deltaTime, 10 );
-      physicsWorld.setGravity( new Ammo.btVector3( 0, gravityConstant, 0 ) );
-      physicsWorld.getWorldInfo().set_m_gravity( new Ammo.btVector3( 0, gravityConstant, 0 ) );
+			
+			/// manipulate gravity with s and d keys
+		        physicsWorld.setGravity( new Ammo.btVector3( 0, gravityConstant, 0 ) );
+		        physicsWorld.getWorldInfo().set_m_gravity( new Ammo.btVector3( 0, gravityConstant, 0 ) );
 
-      ////gravity
-      xgrav = 0.001
+		        ////gravity
+		        xgrav = 0.001
 
-      document.addEventListener("keydown", onDocumentKeyDown, false);
-      function onDocumentKeyDown(event) {
-          var keyCode = event.which;
-          if (keyCode == 83) {
-              gravityConstant -= xgrav;
-          } else if (keyCode == 68) {
-              gravityConstant += xgrav;
-          }
-      };
+		        document.addEventListener("keydown", onDocumentKeyDown, false);
+		        function onDocumentKeyDown(event) {
+			    var keyCode = event.which;
+			    if (keyCode == 83) {
+			        gravityConstant -= xgrav;
+			    } else if (keyCode == 68) {
+			        gravityConstant += xgrav;
+			    }
+		        };
 
 			// Update rope
 			var softBody = rope.userData.physicsBody;
